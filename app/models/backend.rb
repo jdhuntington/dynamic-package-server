@@ -22,7 +22,7 @@ class SomeBadException < StandardError; end
 
 class Backend
   def initialize
-    @base = URI("http://127.0.0.1:5984/npmjs")
+    @base = URI("http://#{ENV['COUCH_SERVER'] || "127.0.0.1"}:5984/npmjs")
   end
 
   def search query
