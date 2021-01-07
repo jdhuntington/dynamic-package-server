@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Manifests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>React version</th>
+      <th>React dom version</th>
+      <th>Fluent version</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @manifests.each do |manifest| %>
+      <tr>
+        <td><%= manifest.name %></td>
+        <td><%= manifest.react_version %></td>
+        <td><%= manifest.react_dom_version %></td>
+        <td><%= manifest.fluent_version %></td>
+        <td><%= link_to 'Show', manifest %></td>
+        <td><%= link_to 'Edit', edit_manifest_path(manifest) %></td>
+        <td><%= link_to 'Destroy', manifest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Manifest', new_manifest_path %>

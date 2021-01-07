@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @manifest.name %>
+</p>
+
+<p>
+  <strong>React version:</strong>
+  <%= @manifest.react_version %>
+</p>
+
+<p>
+  <strong>React dom version:</strong>
+  <%= @manifest.react_dom_version %>
+</p>
+
+<p>
+  <strong>Fluent version:</strong>
+  <%= @manifest.fluent_version %>
+</p>
+
+<%= link_to 'Edit', edit_manifest_path(@manifest) %> |
+<%= link_to 'Back', manifests_path %>

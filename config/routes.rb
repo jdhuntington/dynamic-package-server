@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'scripts/:app/:file', :to => 'scripts#show'
+  resources :manifests
   get 'packages/search'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root :to => 'manifests#index'
 end

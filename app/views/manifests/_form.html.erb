@@ -1,0 +1,43 @@
+<%= form_with(model: manifest) do |form| %>
+  <% if manifest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(manifest.errors.count, "error") %> prohibited this manifest from being saved:</h2>
+
+      <ul>
+        <% manifest.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :react_version %>
+    <%= form.text_field :react_version %>
+
+    <p>Valid values are: <pre>16.14.0</pre>, <pre>17.0.1</pre></p>
+  </div>
+
+  <div class="field">
+    <%= form.label :react_dom_version %>
+    <%= form.text_field :react_dom_version %>
+
+    <p>Valid values are: <pre>16.14.0</pre>, <pre>17.0.1</pre></p>
+  </div>
+
+  <div class="field">
+    <%= form.label :fluent_version %>
+    <%= form.text_field :fluent_version %>
+
+    <p>Valid values are: <pre>7.155.3</pre></p>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
