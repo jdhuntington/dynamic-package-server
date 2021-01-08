@@ -1,3 +1,4 @@
+require'cgi'
 require 'json'
 require 'net/http'
 require 'uri'
@@ -33,7 +34,7 @@ class Backend
 
 
     http = Net::HTTP.new(search_uri.host, search_uri.port)
-    
+
     req = Net::HTTP::Get.new(search_uri)
     req.basic_auth 'admin', 'password'
 
@@ -41,6 +42,20 @@ class Backend
 
     if res.is_a?(Net::HTTPSuccess)
       transform_search_results JSON.parse(res.body)
+    else
+      raise SomeBadException.new
+    end
+  end
+
+  def detail package_name
+    fetch_uri = @base.clone
+    fetch_uri.path += "/" + CGI.escape(package_name)
+    http = Net::HTTP.new(fetch_uri.host, fetch_uri.port)
+    req = Net::HTTP::Get.new(fetch_uri)
+    req.basic_auth 'admin', 'password'
+    res = http.request(req)
+    if res.is_a?(Net::HTTPSuccess)
+      JSON.parse(res.body)
     else
       raise SomeBadException.new
     end

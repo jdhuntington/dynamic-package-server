@@ -4,4 +4,10 @@ class PackagesController < ApplicationController
     result = b.search(params[:q])
     render :json => result
   end
+
+  def detail
+    b = Backend.new
+    result = b.detail(params[:q])
+    render :json => result
+  end
 end
